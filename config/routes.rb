@@ -11,4 +11,8 @@ Rails.application.routes.draw do
     delete 'logout', to: "sessions#destroy", as: 'logout'
   end
 
+  # chrome extension endpoints
+  post 'nominate/create' => 'nominations#create'
+  resources :nominations
+
 end
