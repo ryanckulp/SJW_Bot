@@ -1,0 +1,18 @@
+<h1>We're currently nominating this person... sit tight!</h1>
+
+<script>
+$(document).on('ready', function() {
+  // var nominee_handle = get from query params,
+      // nominator_handle = get from query params;
+
+  $.ajax({
+    url: '/nominate/create',
+    method: 'post',
+    data: {nominee_handle: 'figure-this-out', nominator_handle: 'get-this-later'},
+    success: function() {
+      alert('User nominated successfully!');
+      window.top.close(); // close current tab to return user to twitter
+    }
+  })
+})
+</script>
