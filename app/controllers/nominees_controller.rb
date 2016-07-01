@@ -1,9 +1,23 @@
 class NomineesController < ApplicationController
   skip_before_filter  :verify_authenticity_token # ignore CSRF exception block
-  before_action :add_allow_credentials_headers, only: [:create]
+  before_action :add_allow_credentials_headers, only: [:create, :check]
   before_action :nominee_params, only: [:create]
 
   def new
+  end
+
+  def check
+    nominee = params[:nominee].downcase
+    nominator = params[:nominator].downcase
+    nominee = Nominee.find_by(handle: nominee)
+    nominator = Nominator.find_by(handle: nominator)
+
+    # binding.pry
+    if !!nominee && nominee.nominator_id = nominator.id
+      render json: {status: 'ok', nominated: 'true'}
+    else
+      render json: {status: 'ok', nominated: 'false'}
+    end
   end
 
   def create

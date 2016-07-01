@@ -12,7 +12,8 @@ Rails.application.routes.draw do
   end
 
   # chrome extension endpoints
-  get 'check/:handle' => 'warriors#check'
+  get 'nominees/check/:nominee/:nominator' => 'nominees#check'
+  get 'warriors/check/:handle' => 'warriors#check'
   post 'nominate' => 'nominees#create'
   resources :nominees
 
