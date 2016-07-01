@@ -13,7 +13,9 @@ class NomineesController < ApplicationController
     nominator = Nominator.find_by(handle: nominator)
 
     # binding.pry
-    if !!nominee && nominee.nominator_id = nominator.id
+    if !!nominee && nominee.votes >= 5
+      render json: {status: 'ok', warrior: 'true'}
+    elsif !!nominee && nominee.nominator_id = nominator.id
       render json: {status: 'ok', nominated: 'true'}
     else
       render json: {status: 'ok', nominated: 'false'}
