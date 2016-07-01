@@ -11,10 +11,27 @@
 #
 # It's strongly recommended that you check this file into your version control system.
 
-ActiveRecord::Schema.define(version: 20160701034721) do
+ActiveRecord::Schema.define(version: 20160701035422) do
 
   # These are extensions that must be enabled in order to support this database
   enable_extension "plpgsql"
+
+  create_table "nominators", force: :cascade do |t|
+    t.string   "handle"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+  end
+
+  create_table "nominees", force: :cascade do |t|
+    t.string   "handle"
+    t.integer  "votes"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "nominator_id"
+    t.boolean  "warrior_status", default: false
+  end
+
+  add_index "nominees", ["nominator_id"], name: "index_nominees_on_nominator_id", using: :btree
 
   create_table "users", force: :cascade do |t|
     t.string   "email",                  default: "", null: false
@@ -34,4 +51,15 @@ ActiveRecord::Schema.define(version: 20160701034721) do
   add_index "users", ["email"], name: "index_users_on_email", unique: true, using: :btree
   add_index "users", ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true, using: :btree
 
+  create_table "warriors", force: :cascade do |t|
+    t.string   "handle"
+    t.datetime "created_at"
+    t.datetime "updated_at"
+    t.integer  "nominator_id"
+  end
+
+  add_index "warriors", ["nominator_id"], name: "index_warriors_on_nominator_id", using: :btree
+
+  add_foreign_key "nominees", "nominators"
+  add_foreign_key "warriors", "nominators"
 end
