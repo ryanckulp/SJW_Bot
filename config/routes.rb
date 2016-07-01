@@ -12,7 +12,7 @@ Rails.application.routes.draw do
   end
 
   # chrome extension endpoints
-  post 'nominate/create' => 'nominations#create'
-  resources :nominations
+  post 'nominate' => 'nominees#create'
+  resources :nominees
 
 end

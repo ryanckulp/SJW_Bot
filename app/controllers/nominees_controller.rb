@@ -6,7 +6,19 @@ class NomineesController < ApplicationController
   end
 
   def create
-    Nominee.create(nominee_params)
+    nominee = Nominee.find_or_create_by(handle: nominee_params['nominee_handle'])
+
+    # has the person been nominated before?
+    if nominee.nominator_id.nil?
+      nominator = Nominator.find_or_create_by(handle: nominee_params['nominator_handle'])
+      nominee.nominator_id = nominator.id
+      nominee.votes = 1
+      nominee.save
+    else
+      current_votes = nominee.votes
+      nominee.update(votes: current_votes + 1)
+    end
+
     render json: {status: 'ok'}
   end
 

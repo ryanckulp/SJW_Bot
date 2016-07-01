@@ -1,0 +1,30 @@
+<h1>We're currently nominating this person... sit tight!</h1>
+
+<script>
+$(document).on('ready', function() {
+
+  function getParameterByName(name, url) {
+    if (!url) url = window.location.href;
+    name = name.replace(/[\[\]]/g, "\\$&");
+    var regex = new RegExp("[?&]" + name + "(=([^&#]*)|&|#|$)"),
+        results = regex.exec(url);
+    if (!results) return null;
+    if (!results[2]) return '';
+    return decodeURIComponent(results[2].replace(/\+/g, " "));
+}
+
+  var nominator_handle = getParameterByName('nominator');
+  var nominee_handle = getParameterByName('nominee');
+
+  $.ajax({
+    url: '/nominate',
+    method: 'post',
+    data: {nominator_handle: nominator_handle, nominee_handle: nominee_handle},
+    success: function() {
+      alert('User nominated successfully!');
+      parent.history.back();
+      // window.top.close(); // close current tab to return user to twitter
+    }
+  })
+})
+</script>
