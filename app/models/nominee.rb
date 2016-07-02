@@ -8,7 +8,7 @@ class Nominee < ActiveRecord::Base
       nominator = Nominator.find(self.nominator_id)
       warrior = Warrior.create(handle: self.handle, nominator_id: nominator.id)
       self.warrior_status = true
-      TwitterApi.update(".@#{warrior.handle}, you're now a registered SJW on http://www.sjwbot.com thanks to @#{nominator.handle}")
+      TwitterApi.update("@#{warrior.handle}, you're now a registered SJW on http://www.sjwbot.com thanks to @#{nominator.handle}.")
     end
   end
 
