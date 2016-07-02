@@ -9,7 +9,7 @@ class NomineesController < ApplicationController
     nominee = Nominee.find_by(handle: nominee)
     nominator = Nominator.find_by(handle: nominator)
 
-    if !!nominee && nominee.votes >= 5
+    if !!nominee && nominee.votes >= ENV['MINIMUM_VOTES'].to_i
       render json: {status: 'ok', warrior: 'true'}
     elsif !!nominee && nominee.nominator_id = nominator.id
       render json: {status: 'ok', nominated: 'true'}
