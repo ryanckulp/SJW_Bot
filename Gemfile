@@ -27,6 +27,7 @@ gem 'aws-sdk' # configure in config/application.rb
 gem 'seed_dump' # import / export seed data from existing db (https://github.com/rroblak/seed_dump)
 gem 'figaro' # private ENV vars for safe deployment
 gem 'rename' # rename app to something else, safe to remove
+gem 'twitter'
 
 group :development, :test do
 
