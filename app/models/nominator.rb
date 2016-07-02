@@ -2,7 +2,6 @@ class Nominator < ActiveRecord::Base
   has_many :nominees
   has_many :warriors
 
-
   def on_twitter
     "@#{self.handle}"
   end

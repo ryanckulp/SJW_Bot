@@ -9,7 +9,6 @@ class NomineesController < ApplicationController
     nominee = Nominee.find_by(handle: nominee)
     nominator = Nominator.find_by(handle: nominator)
 
-    # binding.pry
     if !!nominee && nominee.votes >= 5
       render json: {status: 'ok', warrior: 'true'}
     elsif !!nominee && nominee.nominator_id = nominator.id
@@ -25,7 +24,11 @@ class NomineesController < ApplicationController
 
     # has the person been nominated before?
     if nominee.nominator_id.nil?
+
       nominator = Nominator.find_or_create_by(handle: nominee_params['nominator_handle'].downcase)
+      # fetches from twitter; TODO: fetch daily in case profile pics change
+      nominator.avatar = TwitterApi.user(nominator.handle).profile_image_url_https
+
       nominee.nominator_id = nominator.id
       nominee.votes = 1
       nominee.save

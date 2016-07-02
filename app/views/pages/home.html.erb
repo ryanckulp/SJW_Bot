@@ -1,9 +1,9 @@
-<% meta title: "Home", description: "SJW Bot is a leading platform for identifying and avoiding dangerous SJWs on the Internet." %>
+<% meta title: "Home", description: "SJW Bot is a leading platform for identifying and avoiding dangerous SJWs on Twitter." %>
 
 <div class="jumbotron">
   <h1>Don't Let SJWs Ruin Twitter</h1><br>
   <p>SJW Bot is a free platform that helps you identify and avoid dangerous SJWs on the Internet.</p>
-  <button class="btn btn-lg btn-success" id="install-button">Add to Chrome</button><br>
+  <button class="btn btn-lg btn-success" id="chrome-install">Add to Chrome</button><br>
   <small><a href="" data-toggle="modal" data-target=".bs-example-modal-sm">What is this?</a></small>
 </div>
 
@@ -31,9 +31,9 @@
 
 <script>
 $(function() {
-  $('#install-button').on('click', function() {
+  $('#chrome-install').on('click', function() {
     chrome.webstore.install();
-    console.log('initialized inline install');
+    console.log('initialized Chrome inline install.');
   })
 })
 </script>
