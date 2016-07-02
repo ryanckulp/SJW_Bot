@@ -4,7 +4,7 @@ class Nominee < ActiveRecord::Base
   before_save :promote_to_warrior?
 
   def promote_to_warrior?
-    if self.votes == 5
+    if self.votes == ENV['MINIMUM_VOTES']
       nominator = Nominator.find(self.nominator_id)
       warrior = Warrior.create(handle: self.handle, nominator_id: nominator.id)
       self.warrior_status = true
