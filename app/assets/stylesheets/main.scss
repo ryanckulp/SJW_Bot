@@ -12,6 +12,9 @@ body {font-family: Helvetica, Arial}
 .navbar {background-color: transparent; border: none}
 .navbar-toggle {border: none}
 
+// Leaderboards
+thead tr {font-weight: bold}
+
 /* User Authentication */
 .form-signin {max-width: 350px; padding: 15px; margin: 0 auto;}
 .form-signin .form-signin-heading, .form-signin .checkbox {margin-bottom: 10px;}

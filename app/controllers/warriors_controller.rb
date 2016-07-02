@@ -4,7 +4,7 @@ class WarriorsController < ApplicationController
 
   def check
     handle = params[:handle].downcase
-    warrior = Warrior.find_by(handle: handle.downcase)
+    warrior = Warrior.find_by(handle: handle)
 
     if warrior.present?
       render json: {status: 'ok', sjw: 'true'}

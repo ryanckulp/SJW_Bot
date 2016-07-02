@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     delete 'logout', to: "sessions#destroy", as: 'logout'
   end
 
+  # leaderboards
+  resources :nominators
+
   # chrome extension endpoints
   get 'nominees/check/:nominee/:nominator' => 'nominees#check'
   get 'warriors/check/:handle' => 'warriors#check'
