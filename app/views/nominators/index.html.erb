@@ -12,7 +12,9 @@
   <tbody>
     <% @nominators.each do |nominator| %>
     <tr>
-      <td><%= link_to nominator.on_twitter, "https://twitter.com/#{nominator.handle}", target: '_blank' %></td>
+      <td><%= image_tag nominator.avatar, class: 'img img-thumbnail', style: 'max-width: 40px' %>
+          <%= link_to nominator.on_twitter, "https://twitter.com/#{nominator.handle}", target: '_blank' %>
+      </td>
       <td><%= nominator.nominations %></td>
       <td><%= nominator.warriors_confirmed %></td>
     </tr>
