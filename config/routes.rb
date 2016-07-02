@@ -11,6 +11,9 @@ Rails.application.routes.draw do
     delete 'logout', to: "sessions#destroy", as: 'logout'
   end
 
+  # static
+  get 'about' => 'pages#about', as: 'about'
+
   # leaderboards
   get 'leaderboard' => 'nominators#index', as: 'leaderboard'
   resources :nominators
