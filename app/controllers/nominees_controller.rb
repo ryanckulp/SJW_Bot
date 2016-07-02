@@ -3,9 +3,6 @@ class NomineesController < ApplicationController
   before_action :add_allow_credentials_headers, only: [:create, :check]
   before_action :nominee_params, only: [:create]
 
-  def new
-  end
-
   def check
     nominee = params[:nominee].downcase
     nominator = params[:nominator].downcase
