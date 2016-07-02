@@ -12,6 +12,7 @@ Rails.application.routes.draw do
   end
 
   # leaderboards
+  get 'leaderboard' => 'nominators#index', as: 'leaderboard'
   resources :nominators
 
   # chrome extension endpoints
