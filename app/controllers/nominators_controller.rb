@@ -1,10 +1,8 @@
 class NominatorsController < ApplicationController
 
   def index
-    @nominators = Nominator.all
-
+    # sorts by most to fewest nominations
+    @nominators = Nominator.all.sort_by {|nom| -nom.nominees.count}
   end
-
-
 
 end
