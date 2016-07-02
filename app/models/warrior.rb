@@ -5,7 +5,7 @@ class Warrior < ActiveRecord::Base
   after_create :set_nominee_status
 
   def set_nominee_status
-    nominee = Nominee.where(handle: self.handle)
+    nominee = Nominee.find_by(handle: self.handle)
     nominee.warrior_status = true
     nominee.save
   end
